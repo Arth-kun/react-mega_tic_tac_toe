@@ -1,11 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux'
 
 import Board from './Board';
+import { fetchExamples } from '../redux/actions/index';
 
-export default class Game extends React.Component {
+class Game extends React.Component {
+  componentWillMount() {
+    this.props.fetchExamples();
+  }
+
   render() {
     return (
-      <div className="game">
+      <div className="game jumbotron">
         <div className="game-board">
           <Board />
         </div>
@@ -17,3 +23,14 @@ export default class Game extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => state;
+
+const mapDispatchToProps = dispatch => ({
+  fetchExamples: () => dispatch(fetchExamples())
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Game)
