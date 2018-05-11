@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import './App.css';
 import './bootstrap.css';
-import Game from './App/components/Game';
+
+import Home from './App/containers/Home';
+
 import Header from './App/components/Header';
 
 class App extends Component {
@@ -12,10 +14,10 @@ class App extends Component {
       <Router>
         <div>
           <Header />
-          <Route exact path="/" component={Game} />
-          <Route path="/profile" component={Game} />
-          <Route path="/game" component={Game} />
-          <Route path="/ladder" component={Game} />
+          <Route exact path="/" component={Home} />
+          <Route path="/profile" component={Home} />
+          <Route path="/game" component={Home} />
+          <Route path="/ladder" component={Home} />
         </div>
       </Router>
     );

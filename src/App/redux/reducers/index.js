@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import examples from './examples';
+import player from './player';
 
 export default combineReducers({
-  examples,
+  player,
 });
