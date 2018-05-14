@@ -1,9 +1,19 @@
+// This is where all the Actions and Action Creators are stored
+// It's a usual practice to store them all in the same place
+// But another practice, which is better on larger app,
+// is to separate the actions per action type and store
+// them with the reducer, google "redux ducks" for more info
+
+// We use redux-api-middleware to handle all the API calls
 import { CALL_API } from 'redux-api-middleware';
 
+// Change the url by my computer's ip address
+const SERVER_URL = 'http://localhost:3000';
+
+// The player part of the file is already done to help you,
+// But the lobbies part is not operational at all
+
 // --- Actions ---
-export const REQUEST_EXAMPLES = '/examples/REQUEST';
-export const SUCCESS_EXAMPLES = '/examples/SUCCESS';
-export const FAILURE_EXAMPLES = '/examples/FAILURE';
 
 //Player
 export const REQUEST_GET_PLAYER = '/player/REQUEST_GET';
@@ -33,21 +43,12 @@ export const FAILURE_CLOSE_LOBBY = '/lobbies/FAILURE_CLOSE';
 
 
 // --- Actions creators ---
-export function fetchExamples() {
-  return {
-    [CALL_API]: {
-      endpoint: `http://localhost:3000/publications/examples`,
-      method: 'GET',
-      types: [REQUEST_EXAMPLES, SUCCESS_EXAMPLES, FAILURE_EXAMPLES]
-    }
-  }
-}
 
 // Player
 export function getPlayer(pseudo) {
   return {
     [CALL_API]: {
-      endpoint: `http://localhost:3000/methods/players.get`,
+      endpoint: `${SERVER_URL}/methods/players.get`,
       method: 'POST',
       headers: {
         'Accept': 'application/json, text/plain, */*',
@@ -62,7 +63,7 @@ export function getPlayer(pseudo) {
 export function createPlayer(pseudo) {
   return {
     [CALL_API]: {
-      endpoint: `http://localhost:3000/methods/players.insert`,
+      endpoint: `${SERVER_URL}/methods/players.insert`,
       method: 'POST',
       headers: {
         'Accept': 'application/json, text/plain, */*',

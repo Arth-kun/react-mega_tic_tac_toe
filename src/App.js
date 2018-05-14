@@ -1,8 +1,12 @@
+// Get all the component of the App and map the Routes
+// In a larger App we could use a Router file instead
+// Dont look to much at it
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import './App.css';
-import './bootstrap.css';
+// We get all the styles of the app from there
+import './style/App.css';
+import './style/bootstrap.css';
 
 import Home from './App/containers/Home';
 

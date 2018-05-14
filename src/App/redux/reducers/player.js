@@ -1,10 +1,12 @@
-import { 
+// You get all the Actions you need and setup the reducer
+// so it can update the state the right way
+import {
   REQUEST_GET_PLAYER, 
-  SUCCESS_GET_PLAYER, 
+  SUCCESS_GET_PLAYER,
   FAILURE_GET_PLAYER,
   REQUEST_CREATE_PLAYER,
   SUCCESS_CREATE_PLAYER,
-  FAILURE_CREATE_PLAYER, 
+  FAILURE_CREATE_PLAYER,
 } from '../actions/index';
 
 const INITIAL_STATE = { player: {}, error: null, loading: false };
