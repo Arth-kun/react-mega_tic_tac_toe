@@ -36,10 +36,12 @@ export default class Board extends React.Component {
 
   render() {
     const winner = calculateWinner(this.state.squares);
+    const draw = this.state.squares.find(square => square === null) === undefined;
     let status;
+
     if (winner) {
       status = 'Winner: ' + winner;
-    } else if (this.state.squares.find(square => square === null) === undefined) {
+    } else if (draw) {
       status = 'Match nul !';
     }
     else {
@@ -65,7 +67,7 @@ export default class Board extends React.Component {
           {this.renderSquare(8)}
         </div>
         <hr className="my-4" />
-        {(winner || this.state.squares.find(square => square === null) === undefined) && 
+        {(winner || draw) && 
           <button className="btn btn-primary" onClick={() => this.setState(this.initialState)}>Play Again</button>
         }
       </div>
