@@ -25,18 +25,8 @@ export default class Board extends React.Component {
   }
 
   render() {
-    const winner = calculateWinner(this.state.squares);
-    const draw = this.state.squares.find(square => square === null) === undefined;
-    let status;
-
-    if (winner) {
-      status = 'Winner: ' + winner;
-    } else if (draw) {
-      status = 'Match nul !';
-    }
-    else {
-      status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
-    }
+    const { lobby } = this.props;
+    const status = 'Next player: ' + (lobby.nextPlayer === 'playerOne' ? 'X' : 'O');
 
     return (
       <div>
@@ -56,10 +46,6 @@ export default class Board extends React.Component {
           {this.renderSquare(7)}
           {this.renderSquare(8)}
         </div>
-        <hr className="my-4" />
-        {(winner || draw) && 
-          <button className="btn btn-primary" onClick={() => this.setState(this.initialState)}>Play Again</button>
-        }
       </div>
     );
   }
