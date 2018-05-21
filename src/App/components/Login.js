@@ -4,8 +4,18 @@ class Login extends React.Component {
   constructor() {
     super();
     this.state = {
-      value: '',
+      username: '',
     }
+  }
+
+  createPlayer() {
+    const { username } = this.state;
+    this.props.createPlayer(username);
+  }
+
+  connection() {
+    const { username } = this.state;
+    this.props.connection(username);
   }
 
   render() {
@@ -14,9 +24,9 @@ class Login extends React.Component {
 
     return (
       <div className="jumbotron">
-        <h1>Chose a pseudo</h1>
+        <h1 className="display-4">Chose a pseudo</h1>
         <div className="form-group">
-          <input onChange={(event) => this.setState({ value: event.target.value })} type="text" className="form-control" id="inputValid" />
+          <input onChange={(event) => this.setState({ username: event.target.value })} type="text" className="form-control" />
         </div>
         <div className="btn-group">
           <button className="btn btn-primary" onClick={() => createPlayer(value)}>Create a new player</button>

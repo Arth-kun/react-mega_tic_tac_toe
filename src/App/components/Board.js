@@ -1,34 +1,24 @@
 import React from 'react';
 
 import Square from './Square';
-import calculateWinner from '../utils/calculateWinner';
 
 export default class Board extends React.Component {
-  constructor(props) {
-    super(props);
-    this.initialState = {
-      squares: Array(9).fill(null),
-      xIsNext: true,
-    };
-    this.state = this.initialState;
+  constructor() {
+    super();
+
+    this.renderSquare = this.renderSquare.bind(this);
   }
 
   handleClick(i) {
-    const squares = this.state.squares.slice();
-    if (calculateWinner(squares) || squares[i]) {
-      return;
-    }
-    squares[i] = this.state.xIsNext ? 'X' : 'O';    
-    this.setState({
-      squares: squares,
-      xIsNext: !this.state.xIsNext,
-    });
+    const { play, player, lobby } = this.props;
+
+    play(lobby._id, player._id, i);
   }
 
   renderSquare(i) {
     return (
       <Square
-        value={this.state.squares[i]}
+        value={this.props.lobby.squares[i]}
         onClick={() => this.handleClick(i)}
       />
     );

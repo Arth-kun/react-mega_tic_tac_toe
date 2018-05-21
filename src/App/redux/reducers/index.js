@@ -4,7 +4,9 @@
 import { combineReducers } from 'redux';
 
 import player from './player';
+import lobbies from './lobbies';
 
 export default combineReducers({
   player,
+  lobbies,
 });
